@@ -1,3 +1,8 @@
+# knot
+scbdown をベースに、Cosenseとデライトの良いとこどりをした PKM をつくりたい。
+
+# ====以下は scbdown のREADME ====
+
 # scbdown
 Cosense記法 + Markdown記法の良いとこどりをした新記法。
 
