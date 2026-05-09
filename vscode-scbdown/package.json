@@ -1,0 +1,108 @@
+{
+  "name": "scbdown",
+  "displayName": "scbdown",
+  "description": "Syntax highlighting for scbdown (.smd) files",
+  "version": "0.2.0",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "main": "./dist/extension.js",
+  "activationEvents": [
+    "onLanguage:scbdown"
+  ],
+  "scripts": {
+    "build": "esbuild src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --platform=node --target=es2020",
+    "watch": "npm run build -- --watch"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.75.0",
+    "@types/node": "^18.0.0",
+    "typescript": "^5.0.0",
+    "esbuild": "^0.19.0"
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "scbdown.openLink",
+        "title": "scbdown: Open Link"
+      },
+      {
+        "command": "scbdown.previousHeading",
+        "title": "scbdown: Previous Heading"
+      },
+      {
+        "command": "scbdown.nextHeading",
+        "title": "scbdown: Next Heading"
+      },
+      {
+        "command": "scbdown.previousBlock",
+        "title": "scbdown: Previous Block"
+      },
+      {
+        "command": "scbdown.nextBlock",
+        "title": "scbdown: Next Block"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "scbdown.openLink",
+        "key": "shift+enter",
+        "when": "editorTextFocus && editorLangId == scbdown"
+      },
+      {
+        "command": "scbdown.previousHeading",
+        "key": "alt+up",
+        "when": "editorTextFocus && editorLangId == scbdown"
+      },
+      {
+        "command": "scbdown.nextHeading",
+        "key": "alt+down",
+        "when": "editorTextFocus && editorLangId == scbdown"
+      },
+      {
+        "command": "scbdown.previousBlock",
+        "key": "ctrl+up",
+        "when": "editorTextFocus && editorLangId == scbdown"
+      },
+      {
+        "command": "scbdown.nextBlock",
+        "key": "ctrl+down",
+        "when": "editorTextFocus && editorLangId == scbdown"
+      }
+    ],
+    "languages": [
+      {
+        "id": "scbdown",
+        "aliases": [
+          "scbdown",
+          "smd"
+        ],
+        "extensions": [
+          ".smd"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "configurationDefaults": {
+      "[scbdown]": {
+        "editor.quickSuggestions": {
+          "other": "off",
+          "comments": "off",
+          "strings": "off"
+        },
+        "editor.wordBasedSuggestions": "off",
+        "editor.bracketPairColorization.enabled": false
+      }
+    },
+    "grammars": [
+      {
+        "language": "scbdown",
+        "scopeName": "source.scbdown",
+        "path": "./syntaxes/scbdown.tmLanguage.json"
+      }
+    ]
+  }
+}
